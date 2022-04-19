@@ -10,15 +10,18 @@ public class Main {
 	static boolean running = true;
 	static double previousTime = 0;
 	static double deltaTime = 0;
+	static Arrow arrow1 = new Arrow();
 	
 	public static void main(String[] args) {
 		StdDraw.setCanvasSize(CANVAS_WIDTH, CANVAS_HEIGTH);
 		StdDraw.enableDoubleBuffering();
+		StdDraw.setPenColor(Color.white);
 		initializeStuff();
 		mainLoop();
 	}
 	
 	private static void initializeStuff() {
+		
 		previousTime = System.currentTimeMillis();
 	}
 	
@@ -27,6 +30,8 @@ public class Main {
 			StdDraw.clear(bgColor);
 			
 			System.out.println("1");
+			arrow1.draw();
+			
 			
 			
 			StdDraw.show();

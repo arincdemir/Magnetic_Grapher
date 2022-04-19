@@ -19,4 +19,9 @@ public class Vector2D {
 		double newY = v.y * scalar;
 		return new Vector2D(newX, newY);
 	}
+
+	@Override
+	public String toString() {
+		return "Vector2D [x=" + x + ", y=" + y + "]";
+	}
 }
