@@ -2,7 +2,8 @@
 public class Arrow {
 	
 
-	static Vector2D[] verticesRelativeToUnitVectors = {new Vector2D(-0.2, -1), new Vector2D(0.2, -1), new Vector2D(-0.2, 1), new Vector2D(0.2, 1)};
+	static Vector2D[] verticesRelativeToUnitVectors = {new Vector2D(-0.2, -1), new Vector2D(0.2, -1), new Vector2D(0.2, 1), new Vector2D(0.3, 1) ,
+			 new Vector2D(0, 1.5), new Vector2D(-0.3, 1), new Vector2D(-0.2, 1)};
 	
 	private Vector2D[] vertices = new Vector2D[verticesRelativeToUnitVectors.length];
 	private double[] xOfVertices = new double[vertices.length];
@@ -34,9 +35,9 @@ public class Arrow {
 	
 	private void createVertices() {
 		for (int i = 0; i < verticesRelativeToUnitVectors.length; i++) {
-			double x = (verticesRelativeToUnitVectors[i].x * perpendicularVector.x + verticesRelativeToUnitVectors[i].y * unitVector.x) * scale;
-			double y = (verticesRelativeToUnitVectors[i].x * perpendicularVector.y + verticesRelativeToUnitVectors[i].y * unitVector.y) * scale;
-			vertices[i] = Vector2D.addVectors(midPoint, new Vector2D(x, y));
+			double x = verticesRelativeToUnitVectors[i].x * perpendicularVector.x + verticesRelativeToUnitVectors[i].y * unitVector.x ;
+			double y = verticesRelativeToUnitVectors[i].x * perpendicularVector.y + verticesRelativeToUnitVectors[i].y * unitVector.y ;
+			vertices[i] = Vector2D.addVectors(midPoint, Vector2D.scaleVector(new Vector2D(x, y), scale));
 		}
 		
 		for (int i = 0; i < vertices.length; i++) {
