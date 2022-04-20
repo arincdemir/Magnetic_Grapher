@@ -17,7 +17,7 @@ public class SpacePoint extends Vector2D{
 	}
 	
 	public void draw() {
-		arrow = new Arrow(x, y, field.magnitude, Vector2D.scaleVector(field, field.magnitude));
+		arrow = new Arrow(x, y, Math.pow(field.magnitude, 1), Vector2D.scaleVector(field, field.magnitude));
 		arrow.draw();
 	}
 	

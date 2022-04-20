@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.util.ArrayList;
 
 public class Main {
 	static final int CANVAS_WIDTH = 512;
@@ -12,8 +13,11 @@ public class Main {
 	static double deltaTime = 0;
 	
 	
-	static SpacePoint sp1 = new SpacePoint(0.3, 0.4);
-	static SourceWire sw1 = new SourceWire(0.5, 0.5);
+	static ArrayList<SpacePoint> spacePoints = new ArrayList<SpacePoint>();
+	static int numOfPointsPerAxis = 7;
+	static ArrayList<SourceWire> sourceWires = new ArrayList<SourceWire>();
+	
+	
 	
 
 	public static void main(String[] args) {
@@ -25,6 +29,7 @@ public class Main {
 	}
 
 	private static void initializeStuff() {
+		addPointsAndWires();
 
 		previousTime = System.currentTimeMillis();
 	}
@@ -33,10 +38,8 @@ public class Main {
 		while (running) {
 			StdDraw.clear(bgColor);
 
-			sp1.addFieldComponent(sw1.fieldOfPoint(sp1));
-			sp1.draw();
-			System.out.println(sp1.getArrow());
-			sp1.resetField();
+			calcuatePointsField();
+			drawAll();
 
 			StdDraw.show();
 			waitForNextFrame();
@@ -51,6 +54,35 @@ public class Main {
 		} while (deltaTime <= MS_PER_FRAME);
 
 		deltaTime -= MS_PER_FRAME;
+	}
+	
+	private static void calcuatePointsField() {
+		for (SpacePoint spacePoint : spacePoints) {
+			spacePoint.resetField();
+			for (SourceWire sourceWire : sourceWires) {
+				spacePoint.addFieldComponent(sourceWire.fieldOfPoint(spacePoint));
+			}
+		}
+	}
+	
+	private static void drawAll() {
+		for (SpacePoint spacePoint : spacePoints) {
+			spacePoint.draw();
+		}
+	}
+	
+	private static void addPointsAndWires() {
+		double step = 1.0 / numOfPointsPerAxis;
+		for (int i = 1; i <= numOfPointsPerAxis; i++) {
+			for (int j = 1; j <= numOfPointsPerAxis; j++) {
+				spacePoints.add(new SpacePoint(i * step, j * step));
+			}
+		}
+		
+		System.out.println(spacePoints);
+		
+		
+		sourceWires.add(new SourceWire(0.5, 0.5));
 	}
 
 }

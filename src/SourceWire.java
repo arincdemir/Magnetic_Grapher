@@ -1,7 +1,7 @@
 
 public class SourceWire extends Vector2D{
 	private double current;
-	static double fieldConstant = 0.1;
+	static double fieldConstant = 0.12;
 	
 
 	@Override
@@ -21,7 +21,7 @@ public class SourceWire extends Vector2D{
 	public Vector2D fieldOfPoint(Vector2D point) {
 		Vector2D r = Vector2D.substractVectors(point, this);
 		Vector2D perpVector = new Vector2D(r.y, -r.x);
-		Vector2D fieldVector = Vector2D.scaleVector(perpVector, current * fieldConstant / Math.pow(perpVector.magnitude, 2));
+		Vector2D fieldVector = Vector2D.scaleVector(perpVector, current * fieldConstant / Math.pow(perpVector.magnitude, 1.5));
 		return fieldVector;
 	}
 	
