@@ -10,7 +10,11 @@ public class Main {
 	static boolean running = true;
 	static double previousTime = 0;
 	static double deltaTime = 0;
-	static Arrow arrow1 = new Arrow();
+	
+	
+	static SpacePoint sp1 = new SpacePoint(0.3, 0.4);
+	static SourceWire sw1 = new SourceWire(0.5, 0.5);
+	
 
 	public static void main(String[] args) {
 		StdDraw.setCanvasSize(CANVAS_WIDTH, CANVAS_HEIGTH);
@@ -29,8 +33,10 @@ public class Main {
 		while (running) {
 			StdDraw.clear(bgColor);
 
-			System.out.println("1");
-			arrow1.draw();
+			sp1.addFieldComponent(sw1.fieldOfPoint(sp1));
+			sp1.draw();
+			System.out.println(sp1.getArrow());
+			sp1.resetField();
 
 			StdDraw.show();
 			waitForNextFrame();

@@ -54,4 +54,11 @@ public class Arrow {
 	public double getY() {
 		return midPoint.y;
 	}
+
+	@Override
+	public String toString() {
+		return "Arrow [scale=" + scale + ", midPoint=" + midPoint + ", unitVector=" + unitVector + "]";
+	}
+	
+	
 }
