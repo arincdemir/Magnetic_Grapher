@@ -2,8 +2,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 public class Main {
-	static final int CANVAS_WIDTH = 512;
-	static final int CANVAS_HEIGTH = 512;
+	static final int CANVAS_WIDTH = 600;
+	static final int CANVAS_HEIGTH = 600;
 	static final int FPS = 30;
 	static final double MS_PER_FRAME = 1000 / FPS;
 
@@ -14,22 +14,23 @@ public class Main {
 	
 	
 	static ArrayList<SpacePoint> spacePoints = new ArrayList<SpacePoint>();
-	static int numOfPointsPerAxis = 7;
+	static int numOfPointsPerAxis = 13;
 	static ArrayList<SourceWire> sourceWires = new ArrayList<SourceWire>();
 	
 	
 	
 
 	public static void main(String[] args) {
-		StdDraw.setCanvasSize(CANVAS_WIDTH, CANVAS_HEIGTH);
-		StdDraw.enableDoubleBuffering();
-		StdDraw.setPenColor(Color.white);
 		initializeStuff();
 		mainLoop();
 	}
 
 	private static void initializeStuff() {
+		StdDraw.setCanvasSize(CANVAS_WIDTH, CANVAS_HEIGTH);
+		StdDraw.enableDoubleBuffering();
+		StdDraw.setPenColor(Color.white);
 		addPointsAndWires();
+		InputHandler.initializeHandler(sourceWires);
 
 		previousTime = System.currentTimeMillis();
 	}
@@ -38,8 +39,10 @@ public class Main {
 		while (running) {
 			StdDraw.clear(bgColor);
 
+			InputHandler.handleInputs();
 			calcuatePointsField();
 			drawAll();
+			
 
 			StdDraw.show();
 			waitForNextFrame();
@@ -68,6 +71,9 @@ public class Main {
 	private static void drawAll() {
 		for (SpacePoint spacePoint : spacePoints) {
 			spacePoint.draw();
+		}
+		for (SourceWire sourceWire : sourceWires) {
+			sourceWire.draw();
 		}
 	}
 	

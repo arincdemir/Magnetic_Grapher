@@ -1,8 +1,11 @@
+import java.awt.Color;
 
 public class Arrow {
 
+	static Color color = Color.white;
+	static double maxScale = 0.4;
 	static Vector2D[] verticesRelativeToUnitVectors = { new Vector2D(-0.2, -1), new Vector2D(0.2, -1),
-			new Vector2D(0.2, 1), new Vector2D(0.3, 1), new Vector2D(0, 1.5), new Vector2D(-0.3, 1),
+			new Vector2D(0.2, 1), new Vector2D(0.4, 1), new Vector2D(0, 1.5), new Vector2D(-0.4, 1),
 			new Vector2D(-0.2, 1) };
 
 	private Vector2D[] vertices = new Vector2D[verticesRelativeToUnitVectors.length];
@@ -14,6 +17,7 @@ public class Arrow {
 
 	public Vector2D unitVector;
 	public Vector2D perpendicularVector;
+	
 
 	public Arrow() {
 		this(0.5, 0.5, 0.1, new Vector2D(0.707, 0.707));
@@ -44,7 +48,10 @@ public class Arrow {
 	}
 
 	public void draw() {
-		StdDraw.filledPolygon(xOfVertices, yOfVertices);
+		if (scale < maxScale) {
+			StdDraw.setPenColor(color);
+			StdDraw.filledPolygon(xOfVertices, yOfVertices);
+		}
 	}
 
 	public double getX() {
