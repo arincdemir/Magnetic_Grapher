@@ -11,14 +11,10 @@ public class Main {
 	static boolean running = true;
 	static double previousTime = 0;
 	static double deltaTime = 0;
-	
-	
+
 	static ArrayList<SpacePoint> spacePoints = new ArrayList<SpacePoint>();
 	static int numOfPointsPerAxis = 13;
 	static ArrayList<SourceWire> sourceWires = new ArrayList<SourceWire>();
-	
-	
-	
 
 	public static void main(String[] args) {
 		initializeStuff();
@@ -42,7 +38,8 @@ public class Main {
 			InputHandler.handleInputs();
 			calcuatePointsField();
 			drawAll();
-			
+
+			System.out.println(sourceWires.size());
 
 			StdDraw.show();
 			waitForNextFrame();
@@ -58,7 +55,7 @@ public class Main {
 
 		deltaTime -= MS_PER_FRAME;
 	}
-	
+
 	private static void calcuatePointsField() {
 		for (SpacePoint spacePoint : spacePoints) {
 			spacePoint.resetField();
@@ -67,7 +64,7 @@ public class Main {
 			}
 		}
 	}
-	
+
 	private static void drawAll() {
 		for (SpacePoint spacePoint : spacePoints) {
 			spacePoint.draw();
@@ -76,7 +73,7 @@ public class Main {
 			sourceWire.draw();
 		}
 	}
-	
+
 	private static void addPointsAndWires() {
 		double step = 1.0 / numOfPointsPerAxis;
 		for (int i = 1; i <= numOfPointsPerAxis; i++) {
@@ -84,10 +81,9 @@ public class Main {
 				spacePoints.add(new SpacePoint(i * step, j * step));
 			}
 		}
-		
+
 		System.out.println(spacePoints);
-		
-		
+
 		sourceWires.add(new SourceWire(0.5, 0.5));
 	}
 

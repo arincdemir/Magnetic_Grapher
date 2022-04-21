@@ -17,7 +17,6 @@ public class Arrow {
 
 	public Vector2D unitVector;
 	public Vector2D perpendicularVector;
-	
 
 	public Arrow() {
 		this(0.5, 0.5, 0.1, new Vector2D(0.707, 0.707));
@@ -66,6 +65,5 @@ public class Arrow {
 	public String toString() {
 		return "Arrow [scale=" + scale + ", midPoint=" + midPoint + ", unitVector=" + unitVector + "]";
 	}
-	
-	
+
 }

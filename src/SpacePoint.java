@@ -1,9 +1,8 @@
 
-public class SpacePoint extends Vector2D{
+public class SpacePoint extends Vector2D {
 	private Arrow arrow;
 	private Vector2D field;
-	
-	
+	private static double arrowScaleExponent = 0.5;
 
 	@Override
 	public String toString() {
@@ -15,20 +14,21 @@ public class SpacePoint extends Vector2D{
 		super(x, y);
 		field = new Vector2D(0, 0);
 	}
-	
+
 	public void draw() {
-		arrow = new Arrow(x, y, Math.pow(field.magnitude, 1), Vector2D.scaleVector(field, field.magnitude));
+		arrow = new Arrow(x, y, Math.pow(field.magnitude, arrowScaleExponent),
+				Vector2D.scaleVector(field, field.magnitude));
 		arrow.draw();
 	}
-	
+
 	public void resetField() {
 		field = new Vector2D(0, 0);
 	}
-	
-	public void addFieldComponent (Vector2D fieldComponent) {
+
+	public void addFieldComponent(Vector2D fieldComponent) {
 		field = Vector2D.addVectors(fieldComponent, field);
 	}
-	
+
 	public Arrow getArrow() {
 		return arrow;
 	}
@@ -44,6 +44,5 @@ public class SpacePoint extends Vector2D{
 	public void setField(Vector2D field) {
 		this.field = field;
 	}
-
 
 }

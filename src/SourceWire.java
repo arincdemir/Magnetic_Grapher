@@ -1,12 +1,11 @@
 import java.awt.Color;
 
-public class SourceWire extends Vector2D{
+public class SourceWire extends Vector2D {
 	private double current;
-	static double fieldConstant = 0.19;
-	static double fieldExponent = 1.17;
+	static double fieldConstant = 0.09;
+	static double fieldExponent = 1.25;
 	static double radius = 0.03;
 	static Color color = Color.blue;
-	
 
 	@Override
 	public String toString() {
@@ -16,19 +15,20 @@ public class SourceWire extends Vector2D{
 	public SourceWire(double x, double y) {
 		this(x, y, 1);
 	}
-	
+
 	public SourceWire(double x, double y, double current) {
 		super(x, y);
 		this.current = current;
 	}
-	
+
 	public Vector2D fieldOfPoint(Vector2D point) {
 		Vector2D r = Vector2D.substractVectors(point, this);
 		Vector2D perpVector = new Vector2D(r.y, -r.x);
-		Vector2D fieldVector = Vector2D.scaleVector(perpVector, current * fieldConstant / Math.pow(perpVector.magnitude, fieldExponent));
+		Vector2D fieldVector = Vector2D.scaleVector(perpVector,
+				current * fieldConstant / Math.pow(perpVector.magnitude, fieldExponent));
 		return fieldVector;
 	}
-	
+
 	public double getCurrent() {
 		return current;
 	}
@@ -36,10 +36,10 @@ public class SourceWire extends Vector2D{
 	public void setCurrent(double current) {
 		this.current = current;
 	}
-	
+
 	public void draw() {
 		StdDraw.setPenColor(color);
 		StdDraw.filledCircle(x, y, radius);
 	}
-	
+
 }
