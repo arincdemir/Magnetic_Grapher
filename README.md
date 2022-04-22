@@ -8,6 +8,6 @@ You can add wires by pressing "a" and delete a wire by pressing "d" when your mo
 
 You can grab a wire by clicking on it once, and let it go by clicking again.
 
-![img 1](/magnetic grapher1.png)
+![img 1](/ex1.png)
 
-![img 2](/magnetic grapher 2.png)
+![img 2](/ex2.png)
