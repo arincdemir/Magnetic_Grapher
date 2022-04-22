@@ -2,7 +2,7 @@
 public class SpacePoint extends Vector2D {
 	private Arrow arrow;
 	private Vector2D field;
-	private static double arrowScaleExponent = 0.5;
+	private static double arrowScaleExponent = 0.3;
 
 	@Override
 	public String toString() {

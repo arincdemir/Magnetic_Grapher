@@ -2,8 +2,8 @@ import java.awt.Color;
 
 public class SourceWire extends Vector2D {
 	private double current;
-	static double fieldConstant = 0.09;
-	static double fieldExponent = 1.25;
+	static double fieldConstant = 0.07;
+	static double fieldExponent = 2.0;
 	static double radius = 0.03;
 	static Color color = Color.blue;
 

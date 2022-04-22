@@ -3,7 +3,7 @@ import java.awt.Color;
 public class Arrow {
 
 	static Color color = Color.white;
-	static double maxScale = 0.4;
+	static double maxScale = 0.63;
 	static Vector2D[] verticesRelativeToUnitVectors = { new Vector2D(-0.2, -1), new Vector2D(0.2, -1),
 			new Vector2D(0.2, 1), new Vector2D(0.4, 1), new Vector2D(0, 1.5), new Vector2D(-0.4, 1),
 			new Vector2D(-0.2, 1) };
