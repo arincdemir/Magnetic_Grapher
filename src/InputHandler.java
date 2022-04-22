@@ -30,16 +30,16 @@ public class InputHandler {
 
 	private static void delKeyPressed() {
 		Vector2D mousePos = new Vector2D(StdDraw.mouseX(), StdDraw.mouseY());
-		
+
 		SourceWire wireToRemove = null;
-	
+
 		for (SourceWire sourceWire : sourceWires) {
 			if (Vector2D.substractVectors(sourceWire, mousePos).magnitude <= SourceWire.radius) {
 				wireToRemove = sourceWire;
 			}
 		}
-			sourceWires.remove(wireToRemove);
-		
+		sourceWires.remove(wireToRemove);
+
 	}
 
 	private static void addKeyPressed() {

@@ -27,7 +27,7 @@ public class Vector2D {
 		double newY = v.y * scalar;
 		return new Vector2D(newX, newY);
 	}
-	
+
 	public Vector2D getUnitVector() {
 		return scaleVector(this, 1 / magnitude);
 	}

@@ -39,8 +39,6 @@ public class Main {
 			calcuatePointsField();
 			drawAll();
 
-			System.out.println(sourceWires.size());
-
 			StdDraw.show();
 			waitForNextFrame();
 		}
@@ -81,8 +79,6 @@ public class Main {
 				spacePoints.add(new SpacePoint(i * step, j * step));
 			}
 		}
-
-		System.out.println(spacePoints);
 
 		sourceWires.add(new SourceWire(0.5, 0.5));
 	}

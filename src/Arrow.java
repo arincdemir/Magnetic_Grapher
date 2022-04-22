@@ -47,11 +47,6 @@ public class Arrow {
 	}
 
 	public void draw() {
-		for (Vector2D vector2d : vertices) {
-			System.out.println(vector2d);
-			
-		}
-		System.out.println();
 		if (scale < maxScale) {
 			StdDraw.setPenColor(color);
 			StdDraw.filledPolygon(xOfVertices, yOfVertices);
