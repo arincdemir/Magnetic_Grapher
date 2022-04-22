@@ -2,8 +2,8 @@ import java.awt.Color;
 
 public class SourceWire extends Vector2D {
 	private double current;
-	static double fieldConstant = 0.09;
-	static double fieldExponent = 1.25;
+	static double fieldConstant = 0.0002;
+	static double fieldExponent = 1;
 	static double radius = 0.03;
 	static Color color = Color.blue;
 
@@ -24,8 +24,8 @@ public class SourceWire extends Vector2D {
 	public Vector2D fieldOfPoint(Vector2D point) {
 		Vector2D r = Vector2D.substractVectors(point, this);
 		Vector2D perpVector = new Vector2D(r.y, -r.x);
-		Vector2D fieldVector = Vector2D.scaleVector(perpVector,
-				current * fieldConstant / Math.pow(perpVector.magnitude, fieldExponent));
+		Vector2D fieldVector = Vector2D.scaleVector(perpVector.getUnitVector(),
+				current * fieldConstant / Math.pow(r.magnitude, fieldExponent));
 		return fieldVector;
 	}
 

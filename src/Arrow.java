@@ -3,7 +3,7 @@ import java.awt.Color;
 public class Arrow {
 
 	static Color color = Color.white;
-	static double maxScale = 0.4;
+	static double maxScale = 0.06;
 	static Vector2D[] verticesRelativeToUnitVectors = { new Vector2D(-0.2, -1), new Vector2D(0.2, -1),
 			new Vector2D(0.2, 1), new Vector2D(0.4, 1), new Vector2D(0, 1.5), new Vector2D(-0.4, 1),
 			new Vector2D(-0.2, 1) };
@@ -47,6 +47,11 @@ public class Arrow {
 	}
 
 	public void draw() {
+		for (Vector2D vector2d : vertices) {
+			System.out.println(vector2d);
+			
+		}
+		System.out.println();
 		if (scale < maxScale) {
 			StdDraw.setPenColor(color);
 			StdDraw.filledPolygon(xOfVertices, yOfVertices);

@@ -2,7 +2,7 @@
 public class SpacePoint extends Vector2D {
 	private Arrow arrow;
 	private Vector2D field;
-	private static double arrowScaleExponent = 0.5;
+	private static double arrowScaleExponent = 0.6;
 
 	@Override
 	public String toString() {
@@ -17,7 +17,7 @@ public class SpacePoint extends Vector2D {
 
 	public void draw() {
 		arrow = new Arrow(x, y, Math.pow(field.magnitude, arrowScaleExponent),
-				Vector2D.scaleVector(field, field.magnitude));
+				field.getUnitVector());
 		arrow.draw();
 	}
 
